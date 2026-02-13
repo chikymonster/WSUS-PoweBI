@@ -1,69 +1,152 @@
-==========================================
-WSUS Reporting Views Installation
-Started: 2026-02-13 12:26:40
-==========================================
- 
-Installing View 1 of 6: vw_OverallCompliance...
-[SUCCESS] View 1 created: vw_OverallCompliance
- 
-Installing View 2 of 6: vw_ComplianceByClassification...
-Msg 208, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 19 [Batch Start Line 64]
-Invalid object name 'dbo.tbClassificationForUpdate'.
-Msg 15151, Level 16, State 1, Line 89
-Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
-[SUCCESS] View 2 created: vw_ComplianceByClassification
- 
-Installing View 3 of 6: vw_MissingSecurityUpdates...
-Msg 208, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 18 [Batch Start Line 102]
-Invalid object name 'dbo.tbClassificationForUpdate'.
-Msg 15151, Level 16, State 1, Line 132
-Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
-[SUCCESS] View 3 created: vw_MissingSecurityUpdates
- 
-Installing View 4 of 6: vw_NonReportingSystems...
-Msg 208, Level 16, State 1, Procedure vw_NonReportingSystems, Line 22 [Batch Start Line 145]
-Invalid object name 'dbo.tbComputerTargetInTargetGroup'.
-Msg 15151, Level 16, State 1, Line 173
-Cannot find the object 'vw_NonReportingSystems', because it does not exist or you do not have permission.
-[SUCCESS] View 4 created: vw_NonReportingSystems
- 
-Installing View 5 of 6: vw_ComplianceBySystemType...
-Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 14 [Batch Start Line 186]
-Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 15 [Batch Start Line 186]
-Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 15 [Batch Start Line 186]
-Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 16 [Batch Start Line 186]
-Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 17 [Batch Start Line 186]
-Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 17 [Batch Start Line 186]
-Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-Msg 15151, Level 16, State 1, Line 221
-Cannot find the object 'vw_ComplianceBySystemType', because it does not exist or you do not have permission.
-[SUCCESS] View 5 created: vw_ComplianceBySystemType
- 
-Installing View 6 of 6: vw_TopNonCompliantSystems...
-Msg 208, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 21 [Batch Start Line 234]
-Invalid object name 'dbo.tbClassificationForUpdate'.
-Msg 15151, Level 16, State 1, Line 265
-Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
-[SUCCESS] View 6 created: vw_TopNonCompliantSystems
- 
-==========================================
-Verifying Installation...
- 
+TABLE_NAME
+tbAuthorization
+tbAutoDeploymentRule
+tbBundleAll
+tbBundleAtLeastOne
+tbBundleDependency
+tbCategory
+tbCategoryInAutoDeploymentRule
+tbCategoryInSubscription
+tbCategoryType
+tbChangeTracking
+tbClientWithRecentNameChange
+tbCompatiblePrinterProvider
+tbComputersThatNeedDetailedRollup
+tbComputerSummaryForMicrosoftUpdates
+tbComputerTarget
+tbComputerTargetDetail
+tbConfiguration
+tbConfigurationA
+tbConfigurationB
+tbConfigurationC
+tbDcRollupStatus
+tbDeadDeployment
+tbDeletedComputer
+tbDeletedDynamicCategory
+tbDeployment
+tbDistributionComputerHardwareId
+tbDownstreamServerClientActivityRollup
+tbDownstreamServerClientSummaryRollup
+tbDownstreamServerRollupConfiguration
+tbDownstreamServerSummaryRollup
+tbDownstreamServerTarget
+tbDriver
+tbDriverClass
+tbDriverFeatureScore
+tbDriverTargetingGroup
+tbDriverTargetingGroupPrerequisite
+tbDynamicCategory
+tbEmailNotificationRecipient
+tbEulaAcceptance
+tbEulaProperty
+tbEvent
+tbEventInstance
+tbEventMessageTemplate
+tbEventNamespace
+tbEventRollupCounters
+tbEventSource
+tbExpandedTargetInTargetGroup
+tbFile
+tbFileDownloadProgress
+tbFileForRevision
+tbFileHash
+tbFileOnServer
+tbFlattenedRevisionInCategory
+tbFlattenedTargetGroup
+tbFrontEndServersHealth
+tbGroupAuthorization
+tbHandler
+tbImplicitCategory
+tbInstalledUpdateSufficientForPrerequisite
+tbInventoryClass
+tbInventoryClassInstance
+tbInventoryProperty
+tbInventoryPropertyInstance
+tbInventoryRule
+tbInventoryXml
+tbKBArticleForRevision
+tbLanguage
+tbLanguageInSubscription
+tbLocaleMap
+tbLocalizedProperty
+tbLocalizedPropertyForRevision
+tbMapping_Target_DynamicCategory
+tbMoreInfoURLForRevision
+tbNotificationEvent
+tbOSMap
+tbPrecomputedCategoryLocalizedProperty
+tbPreComputedLocalizedProperty
+tbPrerequisite
+tbPrerequisiteDependency
+tbProgramKeys
+tbProperty
+tbReference
+tbRequestedTargetGroup
+tbRequestedTargetGroupsForTarget
+tbRevision
+tbRevisionExtendedLanguageMask
+tbRevisionExtendedProperty
+tbRevisionInCategory
+tbRevisionLanguage
+tbRevisionSupersedesUpdate
+tbSchedule
+tbSchemaVersion
+tbSchemaVersionHistory
+tbSecurityBulletinForRevision
+tbServerHealth
+tbServerSyncResult
+tbSingletonData
+tbStateMachine
+tbStateMachineEvent
+tbStateMachineEventTransitionLog
+tbStateMachineState
+tbStateMachineTransition
+tbTarget
+tbTargetComputerHardwareId
+tbTargetedDriverHwid
+tbTargetGroup
+tbTargetGroupInAutoDeploymentRule
+tbTargetGroupType
+tbTargetInTargetGroup
+tbTargetType
+tbUpdate
+tbUpdateClassificationInAutoDeploymentRule
+tbUpdateFlag
+tbUpdateStatusPerComputer
+tbUpdateSummaryForAllComputers
+tbUpdateType
+tbXml
 
-(19 rows affected)
- 
-==========================================
-Installation Complete!
-Finished: 2026-02-13 12:26:41
-==========================================
- 
-All 6 views have been created successfully.
-You can now connect Power BI to these views.
- 
+TABLE_NAME
+tbDriverClass
+tbInventoryClass
+tbInventoryClassInstance
+tbUpdateClassificationInAutoDeploymentRule
+vClassification
+vClassificationText
 
-Completion time: 2026-02-13T12:26:41.0728561-05:00
+TABLE_NAME
+tbComputerTarget
+tbComputerTargetDetail
+tbDownstreamServerTarget
+tbDriverTargetingGroup
+tbDriverTargetingGroupPrerequisite
+tbExpandedTargetInTargetGroup
+tbFlattenedTargetGroup
+tbGroupAuthorization
+tbMapping_Target_DynamicCategory
+tbRequestedTargetGroup
+tbRequestedTargetGroupsForTarget
+tbTarget
+tbTargetComputerHardwareId
+tbTargetedDriverHwid
+tbTargetGroup
+tbTargetGroupInAutoDeploymentRule
+tbTargetGroupType
+tbTargetInTargetGroup
+tbTargetType
+vComputerGroupMembership
+vComputerTarget
+vComputerTargetGroup
+vw_WSUS_ComputerGroups
+vw_WSUS_GroupCompliance
