@@ -1,43 +1,83 @@
-COLUMN_NAME	DATA_TYPE
-CategoryIndex	int
-CategoryID	int
-ParentCategoryID	int
-CategoryType	nvarchar
-LastChange	datetime
-ProhibitsSubcategories	bit
-ProhibitsUpdates	bit
-DisplayOrder	int
+==========================================
+Creating All 6 WSUS Views (CORRECT VERSION)
+==========================================
+ 
+View 1: vw_OverallCompliance (already works)
+ 
+Creating View 2: vw_ComplianceByClassification...
+Msg 207, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 21 [Batch Start Line 28]
+Invalid column name 'LanguageID'.
+Msg 15151, Level 16, State 1, Line 54
+Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
+[SUCCESS] View 2 created
+ 
+Creating View 3: vw_MissingSecurityUpdates...
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 22 [Batch Start Line 67]
+Invalid column name 'LanguageID'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 27 [Batch Start Line 67]
+Invalid column name 'Title'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 6 [Batch Start Line 67]
+Invalid column name 'Title'.
+Msg 15151, Level 16, State 1, Line 99
+Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
+[SUCCESS] View 3 created
+ 
+View 4: vw_NonReportingSystems (already works)
+ 
+View 5: vw_ComplianceBySystemType (already works)
+ 
+Creating View 6: vw_TopNonCompliantSystems...
+Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 23 [Batch Start Line 124]
+Invalid column name 'LanguageID'.
+Msg 15151, Level 16, State 1, Line 156
+Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
+[SUCCESS] View 6 created
+ 
+==========================================
+Testing All 6 Views
+==========================================
+ 
 
-CategoryIndex	CategoryID	ParentCategoryID	CategoryType	LastChange	ProhibitsSubcategories	ProhibitsUpdates	DisplayOrder
-0	1	NULL	UpdateClassification	2021-02-02 22:53:47.197	1	0	NULL
-1	2	NULL	UpdateClassification	2021-02-02 22:53:47.700	1	0	NULL
-2	3	NULL	UpdateClassification	2021-02-02 22:53:47.793	1	0	NULL
-3	4	NULL	UpdateClassification	2021-02-02 22:53:47.867	1	0	NULL
-4	5	NULL	Company	2021-02-02 22:53:47.943	0	1	1
+(14 rows affected)
+ 
+Testing queries...
+ 
+1. vw_OverallCompliance:
+Warning: Null value is eliminated by an aggregate or other SET operation.
 
-COLUMN_NAME	DATA_TYPE
-LocalUpdateID	int
-UpdateID	uniqueidentifier
-UpdateTypeID	uniqueidentifier
-IsClientSelfUpdate	bit
-PublisherID	uniqueidentifier
-IsPublic	bit
-IsHidden	bit
-DetectoidType	nvarchar
-LegacyName	nvarchar
-LastUndeclinedTime	datetime
-IsLocallyPublished	bit
-ImportedTime	datetime
+(1 row affected)
+ 
+2. vw_ComplianceByClassification:
+Msg 208, Level 16, State 1, Line 192
+Invalid object name 'vw_ComplianceByClassification'.
+ 
+3. vw_MissingSecurityUpdates (first 3):
+Msg 208, Level 16, State 1, Line 202
+Invalid object name 'vw_MissingSecurityUpdates'.
+ 
+4. vw_NonReportingSystems (count):
 
-COLUMN_NAME	DATA_TYPE
-RevisionID	int
-KBArticleID	nvarchar
+(1 row affected)
+ 
+5. vw_ComplianceBySystemType:
 
-COLUMN_NAME	DATA_TYPE
-RevisionID	int
-LocalizedPropertyID	int
-LanguageID	int
+(3 rows affected)
+ 
+6. vw_TopNonCompliantSystems (first 3):
+Msg 208, Level 16, State 1, Line 226
+Invalid object name 'vw_TopNonCompliantSystems'.
+ 
+==========================================
+SUCCESS! All 6 views are working!
+==========================================
+ 
+Next Steps:
+1. Open Power BI Desktop
+2. Get Data -> SQL Server
+3. Server: YOUR_SQL_SERVER
+4. Database: SUSDB
+5. Load these 6 views
+6. Build your dashboard!
+ 
 
-
-
-
+Completion time: 2026-02-13T13:07:02.8526974-05:00
