@@ -1,54 +1,68 @@
-==========================================
-Installing WSUS Reporting Views
-Started: 2026-02-13 12:45:15
-==========================================
+Fixing the 3 views that failed...
  
-Installing View 1 of 6: vw_OverallCompliance...
-[SUCCESS] View 1 created
- 
-Installing View 2 of 6: vw_ComplianceByClassification...
-Msg 208, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 20 [Batch Start Line 55]
-Invalid object name 'dbo.vClassification'.
-Msg 15151, Level 16, State 1, Line 80
+Fixing View 2: vw_ComplianceByClassification...
+Msg 207, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 22 [Batch Start Line 20]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 5 [Batch Start Line 20]
+Invalid column name 'CategoryTitle'.
+Msg 15151, Level 16, State 1, Line 45
 Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
-[SUCCESS] View 2 created
+[SUCCESS] View 2 fixed!
  
-Installing View 3 of 6: vw_MissingSecurityUpdates...
-Msg 208, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 20 [Batch Start Line 92]
-Invalid object name 'dbo.vClassification'.
-Msg 15151, Level 16, State 1, Line 123
+Fixing View 3: vw_MissingSecurityUpdates...
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 25 [Batch Start Line 58]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 25 [Batch Start Line 58]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
+Invalid column name 'Title'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
+Invalid column name 'CreationDate'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
+Invalid column name 'ArticleID'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 6 [Batch Start Line 58]
+Invalid column name 'Title'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 7 [Batch Start Line 58]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 8 [Batch Start Line 58]
+Invalid column name 'CreationDate'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 9 [Batch Start Line 58]
+Invalid column name 'CreationDate'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 12 [Batch Start Line 58]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 13 [Batch Start Line 58]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 16 [Batch Start Line 58]
+Invalid column name 'ArticleID'.
+Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 16 [Batch Start Line 58]
+Invalid column name 'ArticleID'.
+Msg 15151, Level 16, State 1, Line 89
 Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
-[SUCCESS] View 3 created
+[SUCCESS] View 3 fixed!
  
-Installing View 4 of 6: vw_NonReportingSystems...
-[SUCCESS] View 4 created
- 
-Installing View 5 of 6: vw_ComplianceBySystemType...
-[SUCCESS] View 5 created
- 
-Installing View 6 of 6: vw_TopNonCompliantSystems...
-Msg 208, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 22 [Batch Start Line 233]
-Invalid object name 'dbo.vClassification'.
-Msg 15151, Level 16, State 1, Line 264
+Fixing View 6: vw_TopNonCompliantSystems...
+Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 9 [Batch Start Line 102]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 10 [Batch Start Line 102]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 14 [Batch Start Line 102]
+Invalid column name 'CategoryTitle'.
+Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 15 [Batch Start Line 102]
+Invalid column name 'CategoryTitle'.
+Msg 15151, Level 16, State 1, Line 133
 Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
-[SUCCESS] View 6 created
+[SUCCESS] View 6 fixed!
  
 ==========================================
-Verifying Installation...
+Testing all 6 views...
  
+Testing vw_OverallCompliance...
+  [OK] Returns data
+ 
+Testing vw_ComplianceByClassification...
+Msg 208, Level 16, State 1, Line 155
+Invalid object name 'vw_ComplianceByClassification'.
 
-(14 rows affected)
- 
-==========================================
-Installation Complete!
-Finished: 2026-02-13 12:45:15
-==========================================
- 
-SUCCESS: All 6 views created!
- 
-Now test them:
-SELECT * FROM vw_OverallCompliance
-SELECT * FROM vw_ComplianceByClassification
- 
-
-Completion time: 2026-02-13T12:45:15.4752180-05:00
+Completion time: 2026-02-13T12:49:19.7332294-05:00
