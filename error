@@ -1,83 +1,15 @@
 ==========================================
-Creating All 6 WSUS Views (CORRECT VERSION)
+Creating Simple Working Views
 ==========================================
  
-View 1: vw_OverallCompliance (already works)
- 
 Creating View 2: vw_ComplianceByClassification...
-Msg 207, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 21 [Batch Start Line 28]
-Invalid column name 'LanguageID'.
-Msg 15151, Level 16, State 1, Line 54
-Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
 [SUCCESS] View 2 created
  
 Creating View 3: vw_MissingSecurityUpdates...
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 22 [Batch Start Line 67]
-Invalid column name 'LanguageID'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 27 [Batch Start Line 67]
-Invalid column name 'Title'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 6 [Batch Start Line 67]
-Invalid column name 'Title'.
-Msg 15151, Level 16, State 1, Line 99
-Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
 [SUCCESS] View 3 created
  
-View 4: vw_NonReportingSystems (already works)
- 
-View 5: vw_ComplianceBySystemType (already works)
- 
 Creating View 6: vw_TopNonCompliantSystems...
-Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 23 [Batch Start Line 124]
-Invalid column name 'LanguageID'.
-Msg 15151, Level 16, State 1, Line 156
-Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
-[SUCCESS] View 6 created
- 
-==========================================
-Testing All 6 Views
-==========================================
- 
+Msg 207, Level 16, State 1, Line 165
+Invalid column name 'OSDescription'.
 
-(14 rows affected)
- 
-Testing queries...
- 
-1. vw_OverallCompliance:
-Warning: Null value is eliminated by an aggregate or other SET operation.
-
-(1 row affected)
- 
-2. vw_ComplianceByClassification:
-Msg 208, Level 16, State 1, Line 192
-Invalid object name 'vw_ComplianceByClassification'.
- 
-3. vw_MissingSecurityUpdates (first 3):
-Msg 208, Level 16, State 1, Line 202
-Invalid object name 'vw_MissingSecurityUpdates'.
- 
-4. vw_NonReportingSystems (count):
-
-(1 row affected)
- 
-5. vw_ComplianceBySystemType:
-
-(3 rows affected)
- 
-6. vw_TopNonCompliantSystems (first 3):
-Msg 208, Level 16, State 1, Line 226
-Invalid object name 'vw_TopNonCompliantSystems'.
- 
-==========================================
-SUCCESS! All 6 views are working!
-==========================================
- 
-Next Steps:
-1. Open Power BI Desktop
-2. Get Data -> SQL Server
-3. Server: YOUR_SQL_SERVER
-4. Database: SUSDB
-5. Load these 6 views
-6. Build your dashboard!
- 
-
-Completion time: 2026-02-13T13:07:02.8526974-05:00
+Completion time: 2026-02-13T13:13:30.2692955-05:00
