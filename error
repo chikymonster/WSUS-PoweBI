@@ -1,152 +1,54 @@
-TABLE_NAME
-tbAuthorization
-tbAutoDeploymentRule
-tbBundleAll
-tbBundleAtLeastOne
-tbBundleDependency
-tbCategory
-tbCategoryInAutoDeploymentRule
-tbCategoryInSubscription
-tbCategoryType
-tbChangeTracking
-tbClientWithRecentNameChange
-tbCompatiblePrinterProvider
-tbComputersThatNeedDetailedRollup
-tbComputerSummaryForMicrosoftUpdates
-tbComputerTarget
-tbComputerTargetDetail
-tbConfiguration
-tbConfigurationA
-tbConfigurationB
-tbConfigurationC
-tbDcRollupStatus
-tbDeadDeployment
-tbDeletedComputer
-tbDeletedDynamicCategory
-tbDeployment
-tbDistributionComputerHardwareId
-tbDownstreamServerClientActivityRollup
-tbDownstreamServerClientSummaryRollup
-tbDownstreamServerRollupConfiguration
-tbDownstreamServerSummaryRollup
-tbDownstreamServerTarget
-tbDriver
-tbDriverClass
-tbDriverFeatureScore
-tbDriverTargetingGroup
-tbDriverTargetingGroupPrerequisite
-tbDynamicCategory
-tbEmailNotificationRecipient
-tbEulaAcceptance
-tbEulaProperty
-tbEvent
-tbEventInstance
-tbEventMessageTemplate
-tbEventNamespace
-tbEventRollupCounters
-tbEventSource
-tbExpandedTargetInTargetGroup
-tbFile
-tbFileDownloadProgress
-tbFileForRevision
-tbFileHash
-tbFileOnServer
-tbFlattenedRevisionInCategory
-tbFlattenedTargetGroup
-tbFrontEndServersHealth
-tbGroupAuthorization
-tbHandler
-tbImplicitCategory
-tbInstalledUpdateSufficientForPrerequisite
-tbInventoryClass
-tbInventoryClassInstance
-tbInventoryProperty
-tbInventoryPropertyInstance
-tbInventoryRule
-tbInventoryXml
-tbKBArticleForRevision
-tbLanguage
-tbLanguageInSubscription
-tbLocaleMap
-tbLocalizedProperty
-tbLocalizedPropertyForRevision
-tbMapping_Target_DynamicCategory
-tbMoreInfoURLForRevision
-tbNotificationEvent
-tbOSMap
-tbPrecomputedCategoryLocalizedProperty
-tbPreComputedLocalizedProperty
-tbPrerequisite
-tbPrerequisiteDependency
-tbProgramKeys
-tbProperty
-tbReference
-tbRequestedTargetGroup
-tbRequestedTargetGroupsForTarget
-tbRevision
-tbRevisionExtendedLanguageMask
-tbRevisionExtendedProperty
-tbRevisionInCategory
-tbRevisionLanguage
-tbRevisionSupersedesUpdate
-tbSchedule
-tbSchemaVersion
-tbSchemaVersionHistory
-tbSecurityBulletinForRevision
-tbServerHealth
-tbServerSyncResult
-tbSingletonData
-tbStateMachine
-tbStateMachineEvent
-tbStateMachineEventTransitionLog
-tbStateMachineState
-tbStateMachineTransition
-tbTarget
-tbTargetComputerHardwareId
-tbTargetedDriverHwid
-tbTargetGroup
-tbTargetGroupInAutoDeploymentRule
-tbTargetGroupType
-tbTargetInTargetGroup
-tbTargetType
-tbUpdate
-tbUpdateClassificationInAutoDeploymentRule
-tbUpdateFlag
-tbUpdateStatusPerComputer
-tbUpdateSummaryForAllComputers
-tbUpdateType
-tbXml
+==========================================
+Installing WSUS Reporting Views
+Started: 2026-02-13 12:45:15
+==========================================
+ 
+Installing View 1 of 6: vw_OverallCompliance...
+[SUCCESS] View 1 created
+ 
+Installing View 2 of 6: vw_ComplianceByClassification...
+Msg 208, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 20 [Batch Start Line 55]
+Invalid object name 'dbo.vClassification'.
+Msg 15151, Level 16, State 1, Line 80
+Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
+[SUCCESS] View 2 created
+ 
+Installing View 3 of 6: vw_MissingSecurityUpdates...
+Msg 208, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 20 [Batch Start Line 92]
+Invalid object name 'dbo.vClassification'.
+Msg 15151, Level 16, State 1, Line 123
+Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
+[SUCCESS] View 3 created
+ 
+Installing View 4 of 6: vw_NonReportingSystems...
+[SUCCESS] View 4 created
+ 
+Installing View 5 of 6: vw_ComplianceBySystemType...
+[SUCCESS] View 5 created
+ 
+Installing View 6 of 6: vw_TopNonCompliantSystems...
+Msg 208, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 22 [Batch Start Line 233]
+Invalid object name 'dbo.vClassification'.
+Msg 15151, Level 16, State 1, Line 264
+Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
+[SUCCESS] View 6 created
+ 
+==========================================
+Verifying Installation...
+ 
 
-TABLE_NAME
-tbDriverClass
-tbInventoryClass
-tbInventoryClassInstance
-tbUpdateClassificationInAutoDeploymentRule
-vClassification
-vClassificationText
+(14 rows affected)
+ 
+==========================================
+Installation Complete!
+Finished: 2026-02-13 12:45:15
+==========================================
+ 
+SUCCESS: All 6 views created!
+ 
+Now test them:
+SELECT * FROM vw_OverallCompliance
+SELECT * FROM vw_ComplianceByClassification
+ 
 
-TABLE_NAME
-tbComputerTarget
-tbComputerTargetDetail
-tbDownstreamServerTarget
-tbDriverTargetingGroup
-tbDriverTargetingGroupPrerequisite
-tbExpandedTargetInTargetGroup
-tbFlattenedTargetGroup
-tbGroupAuthorization
-tbMapping_Target_DynamicCategory
-tbRequestedTargetGroup
-tbRequestedTargetGroupsForTarget
-tbTarget
-tbTargetComputerHardwareId
-tbTargetedDriverHwid
-tbTargetGroup
-tbTargetGroupInAutoDeploymentRule
-tbTargetGroupType
-tbTargetInTargetGroup
-tbTargetType
-vComputerGroupMembership
-vComputerTarget
-vComputerTargetGroup
-vw_WSUS_ComputerGroups
-vw_WSUS_GroupCompliance
+Completion time: 2026-02-13T12:45:15.4752180-05:00
