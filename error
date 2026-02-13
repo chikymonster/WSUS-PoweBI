@@ -1,0 +1,22 @@
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 22 [Batch Start Line 10]
+Invalid column name 'ComputerID'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 23 [Batch Start Line 10]
+Invalid column name 'IsDeleted'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 6 [Batch Start Line 10]
+Invalid column name 'LastSyncTime'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 7 [Batch Start Line 10]
+Invalid column name 'LastSyncTime'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 8 [Batch Start Line 10]
+Invalid column name 'LastSyncTime'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 11 [Batch Start Line 10]
+Invalid column name 'UpdateID'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 12 [Batch Start Line 10]
+Invalid column name 'UpdateID'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 16 [Batch Start Line 10]
+Invalid column name 'UpdateID'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 17 [Batch Start Line 10]
+Invalid column name 'UpdateID'.
+Msg 207, Level 16, State 1, Procedure vw_OverallCompliance, Line 17 [Batch Start Line 10]
+Invalid column name 'UpdateID'.
+Msg 15151, Level 16, State 1, Line 37
+Cannot find the object 'vw_OverallCompliance', because it does not exist or you do not have permission.
