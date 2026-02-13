@@ -1,68 +1,43 @@
-Fixing the 3 views that failed...
- 
-Fixing View 2: vw_ComplianceByClassification...
-Msg 207, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 22 [Batch Start Line 20]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 5 [Batch Start Line 20]
-Invalid column name 'CategoryTitle'.
-Msg 15151, Level 16, State 1, Line 45
-Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
-[SUCCESS] View 2 fixed!
- 
-Fixing View 3: vw_MissingSecurityUpdates...
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 25 [Batch Start Line 58]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 25 [Batch Start Line 58]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
-Invalid column name 'Title'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
-Invalid column name 'CreationDate'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 26 [Batch Start Line 58]
-Invalid column name 'ArticleID'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 6 [Batch Start Line 58]
-Invalid column name 'Title'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 7 [Batch Start Line 58]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 8 [Batch Start Line 58]
-Invalid column name 'CreationDate'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 9 [Batch Start Line 58]
-Invalid column name 'CreationDate'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 12 [Batch Start Line 58]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 13 [Batch Start Line 58]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 16 [Batch Start Line 58]
-Invalid column name 'ArticleID'.
-Msg 207, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 16 [Batch Start Line 58]
-Invalid column name 'ArticleID'.
-Msg 15151, Level 16, State 1, Line 89
-Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
-[SUCCESS] View 3 fixed!
- 
-Fixing View 6: vw_TopNonCompliantSystems...
-Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 9 [Batch Start Line 102]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 10 [Batch Start Line 102]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 14 [Batch Start Line 102]
-Invalid column name 'CategoryTitle'.
-Msg 207, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 15 [Batch Start Line 102]
-Invalid column name 'CategoryTitle'.
-Msg 15151, Level 16, State 1, Line 133
-Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
-[SUCCESS] View 6 fixed!
- 
-==========================================
-Testing all 6 views...
- 
-Testing vw_OverallCompliance...
-  [OK] Returns data
- 
-Testing vw_ComplianceByClassification...
-Msg 208, Level 16, State 1, Line 155
-Invalid object name 'vw_ComplianceByClassification'.
+COLUMN_NAME	DATA_TYPE
+CategoryIndex	int
+CategoryID	int
+ParentCategoryID	int
+CategoryType	nvarchar
+LastChange	datetime
+ProhibitsSubcategories	bit
+ProhibitsUpdates	bit
+DisplayOrder	int
 
-Completion time: 2026-02-13T12:49:19.7332294-05:00
+CategoryIndex	CategoryID	ParentCategoryID	CategoryType	LastChange	ProhibitsSubcategories	ProhibitsUpdates	DisplayOrder
+0	1	NULL	UpdateClassification	2021-02-02 22:53:47.197	1	0	NULL
+1	2	NULL	UpdateClassification	2021-02-02 22:53:47.700	1	0	NULL
+2	3	NULL	UpdateClassification	2021-02-02 22:53:47.793	1	0	NULL
+3	4	NULL	UpdateClassification	2021-02-02 22:53:47.867	1	0	NULL
+4	5	NULL	Company	2021-02-02 22:53:47.943	0	1	1
+
+COLUMN_NAME	DATA_TYPE
+LocalUpdateID	int
+UpdateID	uniqueidentifier
+UpdateTypeID	uniqueidentifier
+IsClientSelfUpdate	bit
+PublisherID	uniqueidentifier
+IsPublic	bit
+IsHidden	bit
+DetectoidType	nvarchar
+LegacyName	nvarchar
+LastUndeclinedTime	datetime
+IsLocallyPublished	bit
+ImportedTime	datetime
+
+COLUMN_NAME	DATA_TYPE
+RevisionID	int
+KBArticleID	nvarchar
+
+COLUMN_NAME	DATA_TYPE
+RevisionID	int
+LocalizedPropertyID	int
+LanguageID	int
+
+
+
+
