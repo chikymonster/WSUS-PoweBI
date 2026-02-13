@@ -1,87 +1,69 @@
-COLUMN_NAME	DATA_TYPE
-TargetID	int
-ComputerID	nvarchar
-SID	varbinary
-LastSyncTime	datetime
-LastReportedStatusTime	datetime
-LastReportedRebootTime	datetime
-IPAddress	nvarchar
-FullDomainName	nvarchar
-IsRegistered	bit
-LastInventoryTime	datetime
-LastNameChangeTime	datetime
-EffectiveLastDetectionTime	datetime
-ParentServerTargetID	int
-LastSyncResult	int
+==========================================
+WSUS Reporting Views Installation
+Started: 2026-02-13 12:26:40
+==========================================
+ 
+Installing View 1 of 6: vw_OverallCompliance...
+[SUCCESS] View 1 created: vw_OverallCompliance
+ 
+Installing View 2 of 6: vw_ComplianceByClassification...
+Msg 208, Level 16, State 1, Procedure vw_ComplianceByClassification, Line 19 [Batch Start Line 64]
+Invalid object name 'dbo.tbClassificationForUpdate'.
+Msg 15151, Level 16, State 1, Line 89
+Cannot find the object 'vw_ComplianceByClassification', because it does not exist or you do not have permission.
+[SUCCESS] View 2 created: vw_ComplianceByClassification
+ 
+Installing View 3 of 6: vw_MissingSecurityUpdates...
+Msg 208, Level 16, State 1, Procedure vw_MissingSecurityUpdates, Line 18 [Batch Start Line 102]
+Invalid object name 'dbo.tbClassificationForUpdate'.
+Msg 15151, Level 16, State 1, Line 132
+Cannot find the object 'vw_MissingSecurityUpdates', because it does not exist or you do not have permission.
+[SUCCESS] View 3 created: vw_MissingSecurityUpdates
+ 
+Installing View 4 of 6: vw_NonReportingSystems...
+Msg 208, Level 16, State 1, Procedure vw_NonReportingSystems, Line 22 [Batch Start Line 145]
+Invalid object name 'dbo.tbComputerTargetInTargetGroup'.
+Msg 15151, Level 16, State 1, Line 173
+Cannot find the object 'vw_NonReportingSystems', because it does not exist or you do not have permission.
+[SUCCESS] View 4 created: vw_NonReportingSystems
+ 
+Installing View 5 of 6: vw_ComplianceBySystemType...
+Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 14 [Batch Start Line 186]
+Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 15 [Batch Start Line 186]
+Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 15 [Batch Start Line 186]
+Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 16 [Batch Start Line 186]
+Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 17 [Batch Start Line 186]
+Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+Msg 130, Level 15, State 1, Procedure vw_ComplianceBySystemType, Line 17 [Batch Start Line 186]
+Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+Msg 15151, Level 16, State 1, Line 221
+Cannot find the object 'vw_ComplianceBySystemType', because it does not exist or you do not have permission.
+[SUCCESS] View 5 created: vw_ComplianceBySystemType
+ 
+Installing View 6 of 6: vw_TopNonCompliantSystems...
+Msg 208, Level 16, State 1, Procedure vw_TopNonCompliantSystems, Line 21 [Batch Start Line 234]
+Invalid object name 'dbo.tbClassificationForUpdate'.
+Msg 15151, Level 16, State 1, Line 265
+Cannot find the object 'vw_TopNonCompliantSystems', because it does not exist or you do not have permission.
+[SUCCESS] View 6 created: vw_TopNonCompliantSystems
+ 
+==========================================
+Verifying Installation...
+ 
 
-COLUMN_NAME	DATA_TYPE
-TargetID	int
-OSMajorVersion	int
-OSMinorVersion	int
-OSBuildNumber	int
-OSServicePackMajorNumber	int
-OSServicePackMinorNumber	int
-OSLocale	nvarchar
-ComputerMake	nvarchar
-ComputerModel	nvarchar
-BiosVersion	nvarchar
-BiosName	nvarchar
-BiosReleaseDate	datetime
-ProcessorArchitecture	nvarchar
-LastStatusRollupTime	datetime
-LastReceivedStatusRollupNumber	int
-LastSentStatusRollupNumber	int
-SamplingValue	int
-CreatedTime	datetime
-SuiteMask	smallint
-OldProductType	tinyint
-NewProductType	int
-SystemMetrics	int
-ClientVersion	nvarchar
-TargetGroupMembershipChanged	bit
-OSFamily	nvarchar
-OSDescription	nvarchar
-OEM	nvarchar
-DeviceType	nvarchar
-FirmwareVersion	nvarchar
-MobileOperator	nvarchar
+(19 rows affected)
+ 
+==========================================
+Installation Complete!
+Finished: 2026-02-13 12:26:41
+==========================================
+ 
+All 6 views have been created successfully.
+You can now connect Power BI to these views.
+ 
 
-
-COLUMN_NAME	DATA_TYPE
-SummarizationState	int
-LocalUpdateID	int
-TargetID	int
-LastChangeTime	datetime
-LastRefreshTime	datetime
-LastChangeTimeOnServer	datetime
-
-
-COLUMN_NAME	DATA_TYPE
-LocalUpdateID	int
-UpdateID	uniqueidentifier
-UpdateTypeID	uniqueidentifier
-IsClientSelfUpdate	bit
-PublisherID	uniqueidentifier
-IsPublic	bit
-IsHidden	bit
-DetectoidType	nvarchar
-LegacyName	nvarchar
-LastUndeclinedTime	datetime
-IsLocallyPublished	bit
-ImportedTime	datetime
-
-TargetID	ComputerID	SID	LastSyncTime	LastReportedStatusTime	LastReportedRebootTime	IPAddress	FullDomainName	IsRegistered	LastInventoryTime	LastNameChangeTime	EffectiveLastDetectionTime	ParentServerTargetID	LastSyncResult
-36	8047f099-8ff3-42c5-a9e1-50009dd0156d	NULL	2026-02-13 16:44:35.737	2026-02-13 16:52:43.577	NULL	10.200.2.32	esfcu-sp-fe02.esfcu.org	1	NULL	2026-02-13 16:44:35.707	2026-02-13 16:52:42.300	NULL	1
-177	a790f5b2-90aa-4306-ae51-4eb0a99407e6	NULL	2026-02-13 15:24:33.027	2026-02-13 15:26:30.973	NULL	10.200.20.131	ctx-marketing2.esfcu.org	1	NULL	NULL	2026-02-13 15:26:29.537	NULL	1
-178	9f6be95c-797b-4af3-af2e-72f3528a2072	NULL	2026-02-13 13:08:50.103	2026-02-13 13:17:00.040	NULL	10.200.2.85	idpc.esfcu.org	1	NULL	NULL	2026-02-13 13:16:59.297	NULL	1
-183	1b3ab4e0-9710-41c0-b9dd-1a62da92076e	NULL	2026-02-05 07:43:50.150	2026-02-05 07:51:57.187	NULL	10.2.122.99	newlockbox.esfcu.org	1	NULL	NULL	2026-02-05 07:51:56.080	NULL	1
-184	4405b7f2-784a-4540-a70b-17f2910e94c1	NULL	2026-02-13 13:28:19.503	2026-02-13 13:30:17.050	NULL	10.200.20.130	ctx-marketing1.esfcu.org	1	NULL	NULL	2026-02-13 13:30:15.097	NULL	1
-
-
-TargetID	OSMajorVersion	OSMinorVersion	OSBuildNumber	OSServicePackMajorNumber	OSServicePackMinorNumber	OSLocale	ComputerMake	ComputerModel	BiosVersion	BiosName	BiosReleaseDate	ProcessorArchitecture	LastStatusRollupTime	LastReceivedStatusRollupNumber	LastSentStatusRollupNumber	SamplingValue	CreatedTime	SuiteMask	OldProductType	NewProductType	SystemMetrics	ClientVersion	TargetGroupMembershipChanged	OSFamily	OSDescription	OEM	DeviceType	FirmwareVersion	MobileOperator
-36	10	0	17763	0	0	en-US	VMware, Inc.	VMware7,1	VMW71.00V.21100432.B64.2301110304	VMW71.00V.21100432.B64.2301110304	2023-01-11 00:00:00.000	AMD64	NULL	0	0	940	2021-02-10 03:02:38.303	272	3	7	0	10.0.17763.8385	0	Windows	Windows Server 2019 Standard	VMware, Inc.	VMware7,1	VMW71.00V.21100432.B64.2301110304	Not Present
-177	10	0	19045	0	0	en-US	VMware, Inc.	VMware7,1	VMW71.00V.24504846.B64.2501180334	VMW71.00V.24504846.B64.2501180334	2025-01-18 00:00:00.000	AMD64	NULL	0	0	223	2021-02-10 13:53:28.270	256	1	4	0	10.0.19041.6093	0	Windows	Windows 10 Enterprise	VMware, Inc.	VMware7,1	VMW71.00V.24504846.B64.2501180334	Not Present
-178	10	0	26200	0	0	en-US	VMware, Inc.	VMware20,1	VMW201.00V.24504846.B64.2501180339	VMW201.00V.24504846.B64.2501180339	2025-01-18 00:00:00.000	AMD64	NULL	0	0	605	2021-02-10 19:45:50.043	256	1	4	0	1451.2510.27012.0	0	Windows	Windows 10 Enterprise	VMware, Inc.	VMware20,1	VMW201.00V.24504846.B64.2501180339	Not Present
-183	10	0	17763	0	0	en-US	HP	HP ProDesk 400 G3 DM	P23 Ver. 02.11	P23 Ver. 02.11	2017-11-07 00:00:00.000	AMD64	NULL	0	0	70	2021-02-10 19:47:20.157	256	1	125	0	10.0.17763.8276	0	Windows	Windows 10 Enterprise LTSC 2019	HP	HP ProDesk 400 G3 DM	P23 Ver. 02.11	Not Present
-184	10	0	19045	0	0	en-US	VMware, Inc.	VMware7,1	VMW71.00V.24504846.B64.2501180334	VMW71.00V.24504846.B64.2501180334	2025-01-18 00:00:00.000	AMD64	NULL	0	0	991	2021-02-10 19:48:19.120	256	1	4	0	10.0.19041.6093	0	Windows	Windows 10 Enterprise	VMware, Inc.	VMware7,1	VMW71.00V.24504846.B64.2501180334	Not Present
-
+Completion time: 2026-02-13T12:26:41.0728561-05:00
