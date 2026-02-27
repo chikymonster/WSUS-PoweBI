@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataProvider>
+  <Name>WSUS Approved Updates Deployment Summary</Name>
+  <Description>Shows approved updates with installation counts including pending reboot, not installed, and failed counts per update and computer group</Description>
+  <Author>Custom Report</Author>
+  <Version>1.0</Version>
+  <ConnectionString>Data Source=csite-prod-sql1;Initial Catalog=SUSDB;Integrated Security=SSPI;</ConnectionString>
+  <Query>
+    <![CDATA[
+SELECT 
+    -- Update information
+    ISNULL(lpr.Title, CAST(u.UpdateID AS NVARCHAR(100))) AS [Update Name],
+    ISNULL(kb.KBArticleID, 'N/A') AS [KB Article],
+    u.ImportedTime AS [Arrival Date],
+    u.LastUndeclinedTime AS [Approval Date],
+    
+    -- Computer Group
+    COALESCE(tg.Name, 'All Computers') AS [Computer Group Name],
+    
+    -- Update state friendly names
+    'Approved' AS [Is Approved],
+    
+    -- Summary counts per update
+    COUNT(DISTINCT ct.TargetID) AS [Total Computers],
+    
+    SUM(CASE 
+        WHEN us.SummarizationState = 6 THEN 1 
+        ELSE 0 
+    END) AS [Approved Pending Reboot Count],
+    
+    SUM(CASE 
+        WHEN us.SummarizationState = 2 THEN 1 
+        ELSE 0 
+    END) AS [Approved Not Installed Count],
+    
+    SUM(CASE 
+        WHEN us.SummarizationState = 4 THEN 1 
+        ELSE 0 
+    END) AS [Approved Failed Count],
+    
+    SUM(CASE 
+        WHEN us.SummarizationState = 3 THEN 1 
+        ELSE 0 
+    END) AS [Successfully Installed Count],
+    
+    SUM(CASE 
+        WHEN us.SummarizationState = 5 THEN 1 
+        ELSE 0 
+    END) AS [Downloaded Count],
+    
+    -- Overall state summary
+    CASE 
+        WHEN SUM(CASE WHEN us.SummarizationState = 2 THEN 1 ELSE 0 END) = 0 THEN 'Fully Deployed'
+        WHEN SUM(CASE WHEN us.SummarizationState = 4 THEN 1 ELSE 0 END) > 0 THEN 'Has Failures'
+        WHEN SUM(CASE WHEN us.SummarizationState = 2 THEN 1 ELSE 0 END) > 0 THEN 'Deployment In Progress'
+        ELSE 'Ready'
+    END AS [Deployment Status],
+    
+    -- Completion percentage
+    CAST(
+        (SUM(CASE WHEN us.SummarizationState = 3 THEN 1 ELSE 0 END) * 100.0) / 
+        NULLIF(COUNT(DISTINCT ct.TargetID), 0)
+    AS DECIMAL(5,2)) AS [Installation Success %]
+
+FROM dbo.tbUpdate u
+INNER JOIN dbo.tbUpdateStatusPerComputer us ON u.LocalUpdateID = us.LocalUpdateID
+INNER JOIN dbo.tbComputerTarget ct ON us.TargetID = ct.TargetID
+LEFT JOIN dbo.tbLocalizedPropertyForRevision lpr ON u.LocalUpdateID = lpr.RevisionID AND lpr.LanguageID = 1033
+LEFT JOIN dbo.tbKBArticleForRevision kb ON u.LocalUpdateID = kb.RevisionID
+LEFT JOIN dbo.tbTargetInTargetGroup ttg ON ct.TargetID = ttg.TargetID
+LEFT JOIN dbo.tbTargetGroup tg ON ttg.TargetGroupID = tg.TargetGroupID
+
+WHERE u.IsHidden = 0
+
+GROUP BY 
+    u.UpdateID,
+    lpr.Title,
+    kb.KBArticleID,
+    u.ImportedTime,
+    u.LastUndeclinedTime,
+    tg.Name
+
+ORDER BY 
+    [Computer Group Name] ASC,
+    u.ImportedTime DESC
+    ]]>
+  </Query>
+  <Parameters>
+    <Parameter>
+      <Name>SERVER</Name>
+      <Description>SQL Server name</Description>
+      <Type>String</Type>
+      <DefaultValue>localhost</DefaultValue>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column Name="Update Name" Type="String" />
+    <Column Name="KB Article" Type="String" />
+    <Column Name="Arrival Date" Type="DateTime" />
+    <Column Name="Approval Date" Type="DateTime" />
+    <Column Name="Computer Group Name" Type="String" />
+    <Column Name="Is Approved" Type="String" />
+    <Column Name="Total Computers" Type="Integer" />
+    <Column Name="Approved Pending Reboot Count" Type="Integer" />
+    <Column Name="Approved Not Installed Count" Type="Integer" />
+    <Column Name="Approved Failed Count" Type="Integer" />
+    <Column Name="Successfully Installed Count" Type="Integer" />
+    <Column Name="Downloaded Count" Type="Integer" />
+    <Column Name="Deployment Status" Type="String" />
+    <Column Name="Installation Success %" Type="Decimal" />
+  </Columns>
+</DataProvider>
