@@ -1,15 +1,14 @@
-==========================================
-Creating Simple Working Views
-==========================================
- 
-Creating View 2: vw_ComplianceByClassification...
-[SUCCESS] View 2 created
- 
-Creating View 3: vw_MissingSecurityUpdates...
-[SUCCESS] View 3 created
- 
-Creating View 6: vw_TopNonCompliantSystems...
-Msg 207, Level 16, State 1, Line 165
-Invalid column name 'OSDescription'.
-
-Completion time: 2026-02-13T13:13:30.2692955-05:00
+SELECT dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.hostname AS [Hostname (Update Server)], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ComputerGroupAndUpdateInfo_ComputerGroupName AS [Computer Group Name], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ComputerGroupAndUpdateInfo_UpdateName AS [Update Name], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.UpdateClassificationTitle AS [Update Classification Title], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ArrivalDate AS [Arrival Date], (CASE WHEN dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.State IS NULL THEN NULL
+ELSE 
+CASE dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.State
+WHEN 'LicenseAgreementNotReady' THEN 'License Agreement is not downloaded'
+WHEN 'InstallationImpossible' THEN 'Installation not possible'
+WHEN 'NotNeeded' THEN 'Files not downloaded (ready for installation)'
+WHEN 'NotReady' THEN 'Not downloaded'
+WHEN 'Ready' THEN 'Ready for installation'
+WHEN 'Canceled' THEN 'Download canceled'
+WHEN 'Failed' THEN 'Failed to download'
+WHEN 'LicenseAgreementFailed' THEN 'License agreement failed to download'
+END
+END
+) AS [State (Friendly Name)], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovalCreationDate AS [Approval Creation Date], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.IsApproved AS [Is Approved], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovedPendingRebootCount AS [Approved Pending Reboot Count], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovedNotInstalledCount AS [Approved Not Installed Count], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovedFailedCount AS [Approved Failed Count] FROM dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails ORDER BY dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ComputerGroupAndUpdateInfo_ComputerGroupName ASC  
