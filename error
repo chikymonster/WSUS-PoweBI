@@ -1,14 +1,64 @@
-SELECT dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.hostname AS [Hostname (Update Server)], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ComputerGroupAndUpdateInfo_ComputerGroupName AS [Computer Group Name], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ComputerGroupAndUpdateInfo_UpdateName AS [Update Name], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.UpdateClassificationTitle AS [Update Classification Title], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ArrivalDate AS [Arrival Date], (CASE WHEN dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.State IS NULL THEN NULL
-ELSE 
-CASE dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.State
-WHEN 'LicenseAgreementNotReady' THEN 'License Agreement is not downloaded'
-WHEN 'InstallationImpossible' THEN 'Installation not possible'
-WHEN 'NotNeeded' THEN 'Files not downloaded (ready for installation)'
-WHEN 'NotReady' THEN 'Not downloaded'
-WHEN 'Ready' THEN 'Ready for installation'
-WHEN 'Canceled' THEN 'Download canceled'
-WHEN 'Failed' THEN 'Failed to download'
-WHEN 'LicenseAgreementFailed' THEN 'License agreement failed to download'
-END
-END
-) AS [State (Friendly Name)], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovalCreationDate AS [Approval Creation Date], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.IsApproved AS [Is Approved], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovedPendingRebootCount AS [Approved Pending Reboot Count], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovedNotInstalledCount AS [Approved Not Installed Count], dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ApprovedFailedCount AS [Approved Failed Count] FROM dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails ORDER BY dbo.WSUS_ApprovedUpdatesInstallationSummaryInfoWithApprovalDetails.ComputerGroupAndUpdateInfo_ComputerGroupName ASC  
+Error:
+The Active Directory schema isn't up-to-date, and this user account isn't a member of the 'Schema Admins' and/or 'Enterprise Admins' groups.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-SchemaUpdateRequired?view=exchserver-2019
+
+Error:
+Global updates need to be made to Active Directory, and this user account isn't a member of the 'Enterprise Admins' group.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-GlobalUpdateRequired?view=exchserver-2019
+
+Error:
+You must be a member of the 'Organization Management' role group or a member of the 'Enterprise Admins' group to continue.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-GlobalServerInstall?view=exchserver-2019
+
+Error:
+You must use an account that's a member of the Organization Management role group to install or upgrade the first Mailbox server role in the topology.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-DelegatedBridgeheadFirstInstall?view=exchserver-2019
+
+Error:
+You must use an account that's a member of the Organization Management role group to install the first Client Access server role in the topology.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-DelegatedCafeFirstInstall?view=exchserver-2019
+
+Error:
+You must use an account that's a member of the Organization Management role group to install the first Client Access server role in the topology.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-DelegatedFrontendTransportFirstInstall?view=exchserver-2019
+
+Error:
+You must use an account that's a member of the Organization Management role group to install or upgrade the first Mailbox server role in the topology.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-DelegatedMailboxFirstInstall?view=exchserver-2019
+
+Error:
+You must use an account that's a member of the Organization Management role group to install or upgrade the first Client Access server role in the topology.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-DelegatedClientAccessFirstInstall?view=exchserver-2019
+
+Error:
+Setup encountered a problem while validating the state of Active Directory: Exchange organization-level objects have not been created, and setup cannot create them because the local computer is not in the same domain and site as the schema master.  Run setup with the /prepareAD parameter on a computer in the domain ESFCU and site CSITE, and wait for replication to complete.  See the Exchange setup log for more information on this error.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-AdInitErrorRule?view=exchserver-2019
+
+Error:
+The forest functional level of the current Active Directory forest is not Windows Server 2012 R2 or later. To install Exchange Server Subscription Edition, the forest functional level must be at least Windows Server 2012 R2.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-ForestLevelNotWin2012R2?view=exchserver-2019
+
+Error:
+This computer requires the Microsoft Unified Communications Managed API 4.0, Core Runtime 64-bit. Please install the software from http://go.microsoft.com/fwlink/?LinkId=260990.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-UcmaRedistMsi?view=exchserver-2019
+
+Error:
+Either Active Directory doesn't exist, or it can't be contacted.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-CannotAccessAD?view=exchserver-2019
+
+Error:
+Visual C++ 2013 Redistributable Package is a required component. Please install the required binaries and re-run the setup. Use URI https://www.microsoft.com/download/details.aspx?id=40784 to download the binaries.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-VC2013RedistDependencyRequirement?view=exchserver-2019
+
+Error:
+The 'IIS URL rewrite module' isn't installed on this computer and needs to be installed before Exchange Setup can begin.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-IISURLRewriteNotInstalled?view=exchserver-2019
+
+Warning:
+Setup will prepare the organization for Exchange Server Subscription Edition by using 'Setup /PrepareAD'. No Exchange Server 2016 roles have been detected in this topology. After this operation, you will not be able to install any Exchange Server 2016 roles.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-NoE16ServerWarning?view=exchserver-2019
+
+Warning:
+Setup will prepare the organization for Exchange Server Subscription Edition by using 'Setup /PrepareAD'. No Exchange Server 2013 roles have been detected in this topology. After this operation, you will not be able to install any Exchange Server 2013 roles.
+For more information, visit: https://learn.microsoft.com/Exchange/plan-and-deploy/deployment-ref/ms-exch-setupreadiness-NoE15ServerWarning?view=exchserver-2019
+
